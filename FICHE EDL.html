@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Fiche État des Lieux - Logement Étudiant</title>
+  <style>
+    @media print {
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 210mm;
+        height: 297mm;
+        padding: 10mm;
+        box-sizing: border-box;
+        page-break-inside: avoid;
+      }
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1, h2 {
+      color: #2c3e50;
+      margin-bottom: 15px;
+      font-size: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="date"] {
+      width: 100%;
+      padding: 6px;
+      margin-top: 4px;
+      box-sizing: border-box;
+      font-size: 13px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 13px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #eaeaea;
+    }
+
+    .signature-section {
+      margin-top: 20px;
+    }
+
+    .signature-section label {
+      width: 100%;
+      margin-bottom: 8px;
+    }
+
+    .signature-section input {
+      width: 50%;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <center>
+    <h1>Fiche État des Lieux</h1>
+    </center>
+    
+    <section>
+      <h2>Informations générales</h2>
+      <label>Adresse du logement :
+        <input type="text" name="adresse">
+      </label>
+      <label>Nom de l'étudiant :
+        <input type="text" name="nom_etudiant">
+      </label>
+      <label>Date de visite :
+        <input type="date" name="date_visite">
+      </label>
+    </section>
+
+    <section>
+      <h2>État des pièces</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Pièce / Équipement</th>
+            <th>État</th>
+            <th>Remarques</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Chambre</td><td><input type="text" name="etat_chambre"></td><td><input type="text" name="remarques_chambre"></td></tr>
+          <tr><td>Salon</td><td><input type="text" name="etat_salon"></td><td><input type="text" name="remarques_salon"></td></tr>
+          <tr><td>Couloir</td><td><input type="text" name="etat_couloir"></td><td><input type="text" name="remarques_couloir"></td></tr>
+          <tr><td>Salle de bain / WC</td><td><input type="text" name="etat_sdb"></td><td><input type="text" name="remarques_sdb"></td></tr>
+          <tr><td>Cuisine</td><td><input type="text" name="etat_cuisine"></td><td><input type="text" name="remarques_cuisine"></td></tr>
+          <tr><td>Balcon</td><td><input type="text" name="etat_balcon"></td><td><input type="text" name="remarques_balcon"></td></tr>
+          <tr><td>Détecteur de fumée</td><td><input type="text" name="etat_detecteur"></td><td><input type="text" name="remarques_detecteur"></td></tr>
+          <tr><td>Porte</td><td><input type="text" name="etat_porte"></td><td><input type="text" name="remarques_porte"></td></tr>
+          <tr><td>Mobilier</td><td><input type="text" name="etat_mobilier"></td><td><input type="text" name="remarques_mobilier"></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="signature-section">
+      <h2>Signatures</h2>
+      <label>Signature de l'étudiant :
+        <input type="text" name="signature_etudiant">
+      </label>
+      <label>Signature de l'agent :
+        <input type="text" name="signature_agent">
+      </label>
+    </section>
+  </div>
+</body>
+</html>
