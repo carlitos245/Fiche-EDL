@@ -84,14 +84,38 @@
     .signature-section input {
       width: 50%;
     }
+
+    .header {
+  position: relative;
+  margin-bottom: 10px;
+  height: 80px;
+}
+
+.logo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 170px;
+  height: 100px;
+}
+
+.header h1 {
+  text-align: center;
+  margin: 0;
+  line-height: 80px;
+  font-size: 24px;
+}
+
+
   </style>
 </head>
 <body>
-  <div class="container">
-    <center>
-    <h1>Fiche État des Lieux</h1>
-    </center>
-    
+  
+  <div id="form" class="container">
+    <div class="header">
+  <img src="Logo-Groupe-SOS.jpg" alt="Logo" class="logo">
+  <h1>Fiche État des Lieux</h1>
+</div>
     <section>
       <h2>Informations générales</h2>
       <label>Adresse du logement :
@@ -137,7 +161,42 @@
       <label>Signature de l'agent :
         <input type="text" name="signature_agent">
       </label>
-    </section>
+    </section><br>
+
+    <!-- Bouton de téléchargement -->
+    <center>
+      <button onclick="exportDoc()">📄 Télécharger en .doc</button>
+    </center>
   </div>
+
+  <!-- Scripts nécessaires -->
+  <script>
+    function exportDoc() {
+      const form = document.getElementById('form').cloneNode(true);
+      form.querySelectorAll('input').forEach(input => {
+        const span = document.createElement('span');
+        span.textContent = input.value || '__________';
+        input.parentNode.replaceChild(span, input);
+      });
+
+      const html = `
+        <html xmlns:o='urn:schemas-microsoft-com:office:office'
+              xmlns:w='urn:schemas-microsoft-com:office:word'
+              xmlns='http://www.w3.org/TR/REC-html40'>
+        <head><meta charset='utf-8'></head><body>${form.innerHTML}</body></html>
+      `;
+
+      const blob = new Blob(['\ufeff', html], {
+        type: 'application/msword'
+      });
+
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.download = 'etat_des_lieux.doc';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  </script>
 </body>
 </html>
